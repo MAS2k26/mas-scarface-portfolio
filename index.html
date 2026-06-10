@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MAS SCARFACE | Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#0f172a;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:white;
+    }
+
+    .container{
+      width:90%;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    section{
+      padding:100px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:42px;
+      margin-bottom:60px;
+      color:#38bdf8;
+    }
+
+    header{
+      position:fixed;
+      width:100%;
+      top:0;
+      left:0;
+      background:#0f172ae8;
+      backdrop-filter:blur(10px);
+      z-index:1000;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+
+    nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 0;
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:700;
+      color:#38bdf8;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:30px;
+      list-style:none;
+    }
+
+    .nav-links a{
+      transition:0.3s;
+    }
+
+    .nav-links a:hover{
+      color:#38bdf8;
+    }
+
+    .menu-btn{
+      display:none;
+      font-size:30px;
+      cursor:pointer;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      background:linear-gradient(to right,#0f172a,#111827);
+    }
+
+    .hero-content{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    .hero-text h3{
+      font-size:24px;
+      color:#38bdf8;
+      margin-bottom:10px;
+    }
+
+    .hero-text h1{
+      font-size:60px;
+      margin-bottom:20px;
+    }
+
+    .hero-text p{
+      color:#cbd5e1;
+      margin-bottom:30px;
+      line-height:1.8;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 35px;
+      background:#38bdf8;
+      color:#000;
+      border-radius:50px;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      transform:translateY(-5px);
+      background:#0ea5e9;
+    }
+
+    .hero-image{
+      text-align:center;
+    }
+
+    .hero-image img{
+  width:420px;
+  object-fit:contain;
+  background:none;
+  border:none;
+  border-radius:0;
+  box-shadow:none;
+  filter:drop-shadow(0 25px 30px rgba(0,0,0,0.5));
+  animation:float 4s ease-in-out infinite;
+}
+
+.hero-image{
+  position:relative;
+  display:flex;
+  justify-content:center;
+}
+
+.hero-image::after{
+  content:'';
+  position:absolute;
+  bottom:-15px;
+  width:220px;
+  height:18px;
+  background:rgba(56,189,248,0.35);
+  filter:blur(14px);
+  border-radius:50%;
+}
+
+@keyframes float{
+
+  0%{
+    transform:translateY(0px);
+  }
+
+  50%{
+    transform:translateY(-18px);
+  }
+
+  100%{
+    transform:translateY(0px);
+  }
+
+}
+
+    .about-content{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    .about-content img{
+      width:100%;
+      border-radius:20px;
+    }
+
+    .about-text h3{
+      font-size:35px;
+      margin-bottom:20px;
+    }
+
+    .about-text p{
+      color:#cbd5e1;
+      line-height:1.8;
+    }
+
+    .skills-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .skill-card{
+      background:#1e293b;
+      padding:40px;
+      text-align:center;
+      border-radius:20px;
+      transition:0.3s;
+    }
+
+    .skill-card:hover{
+      transform:translateY(-10px);
+      background:#334155;
+    }
+
+    .skill-card h3{
+      margin-top:15px;
+      font-size:22px;
+    }
+
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .service-card{
+      background:#1e293b;
+      padding:40px;
+      border-radius:20px;
+      transition:0.3s;
+    }
+
+    .service-card:hover{
+      transform:translateY(-10px);
+      background:#334155;
+    }
+
+    .service-card h3{
+      margin-bottom:20px;
+      color:#38bdf8;
+    }
+
+    .service-card p{
+      color:#cbd5e1;
+      line-height:1.8;
+    }
+
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:30px;
+    }
+
+    .project-card{
+      background:#1e293b;
+      border-radius:20px;
+      overflow:hidden;
+      transition:0.3s;
+    }
+
+    .project-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .project-card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .project-content{
+      padding:25px;
+    }
+
+    .project-content h3{
+      margin-bottom:10px;
+    }
+
+    .project-content p{
+      color:#cbd5e1;
+      line-height:1.7;
+    }
+
+    .contact form{
+      max-width:700px;
+      margin:auto;
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+    }
+
+    .contact input,
+    .contact textarea{
+      padding:18px;
+      background:#1e293b;
+      border:none;
+      outline:none;
+      border-radius:12px;
+      color:white;
+    }
+
+    .contact textarea{
+      resize:none;
+      height:180px;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      background:#020617;
+      color:#94a3b8;
+    }
+
+    @media(max-width:900px){
+
+      .hero-content,
+      .about-content{
+        grid-template-columns:1fr;
+        text-align:center;
+      }
+
+      .hero-text h1{
+        font-size:42px;
+      }
+
+      .hero-image img{
+        width:280px;
+        height:280px;
+      }
+
+      .nav-links{
+        position:absolute;
+        top:80px;
+        right:-100%;
+        flex-direction:column;
+        background:#0f172a;
+        width:250px;
+        padding:30px;
+        transition:0.4s;
+      }
+
+      .nav-links.active{
+        right:0;
+      }
+
+      .menu-btn{
+        display:block;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="container">
+
+    <nav>
+
+      <div class="logo">POWERD BY MAS SCARFACE</div>
+
+      <ul class="nav-links" id="navLinks">
+
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+
+      </ul>
+
+      <div class="menu-btn" id="menuBtn">☰</div>
+
+    </nav>
+
+  </div>
+
+</header>
+
+<section class="hero" id="home">
+
+  <div class="container">
+
+    <div class="hero-content">
+
+      <div class="hero-text">
+
+        <h3>Hello, I'm</h3>
+
+        <h1>MD. MUSHIBUR AMIN SADI</h1>
+
+        <p>
+          I am a professional graphics designer specializing
+          in premium logo design and modern branding.
+        </p>
+
+        <a href="#projects" class="btn">
+          View My Work
+        </a>
+
+      </div>
+
+      <div class="hero-image">
+
+        <img src="myphoto.jpg" alt="Profile Photo">
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="about">
+
+  <div class="container">
+
+    <h2 class="section-title">About Me</h2>
+
+    <div class="about-content">
+
+      <img src="about.jpg" alt="About Photo">
+
+      <div class="about-text">
+
+        <h3>Professional Graphic Designer</h3>
+
+        <p>
+          I specialize in logo design, brand identity,
+          social media design and premium creative visuals.
+          My goal is to help brands grow through modern
+          and professional digital design experiences.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="skills">
+
+  <div class="container">
+
+    <h2 class="section-title">My Skills</h2>
+
+    <div class="skills-grid">
+
+      <div class="skill-card">
+  <h3>Social Media Post Design</h3>
+</div>
+
+<div class="skill-card">
+  <h3>ID Card Design</h3>
+</div>
+
+<div class="skill-card">
+  <h3>Custom Banner Design</h3>
+</div>
+
+<div class="skill-card">
+  <h3>Custom Logo Design</h3>
+</div>
+
+<div class="skill-card">
+  <h3>Facebook Profile Design</h3>
+</div>
+
+<div class="skill-card">
+  <h3>Facebook Cover Design</h3>
+</div>
+
+<div class="skill-card">
+  <h3>Mandala Art Design</h3>
+</div>
+
+<div class="skill-card">
+  <h3>Wedding Card Design</h3>
+</div>
+
+<div class="skill-card">
+  <h3>Birthday Card Design</h3>
+</div>
+
+<div class="skill-card">
+  <h3>Data Entry</h3>
+</div>
+
+<div class="skill-card">
+  <h3>Book Cover Design</h3>
+</div>
+
+<div class="skill-card">
+  <h3>Desktop Wallpaper Design</h3>
+</div>
+
+<div class="skill-card">
+  <h3>Mobile Wallpaper Design</h3>
+</div>
+
+<div class="skill-card">
+  <h3>Basic Website Design</h3>
+</div>
+
+<div class="skill-card">
+  <h3>Website Development</h3>
+</div>
+
+<div class="skill-card">
+  <h3>Custom T-Shirt Design</h3>
+</div>
+
+<div class="skill-card">
+  <h3>Personal Branding</h3>
+</div>
+
+<div class="skill-card">
+  <h3>Product Packaging Design</h3>
+</div>
+
+<div class="skill-card">
+  <h3>Brand Identity Design</h3>
+</div>
+
+<div class="skill-card">
+  <h3>Video Editing</h3>
+</div>
+
+<div class="skill-card">
+  <h3>Professional Photo Editing</h3>
+</div>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="services">
+
+  <div class="container">
+
+    <h2 class="section-title">Services</h2>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+
+        <h3>Logo Design</h3>
+
+        <p>
+          Modern premium logo design services for businesses.
+        </p>
+
+      </div>
+
+      <div class="service-card">
+
+        <h3>Brand Identity</h3>
+
+        <p>
+          Professional visual branding and identity solutions.
+        </p>
+
+      </div>
+
+      <div class="service-card">
+
+        <h3>Social Media Design</h3>
+
+        <p>
+          Creative and attractive social media design services.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="projects">
+
+  <div class="container">
+
+    <h2 class="section-title">Projects</h2>
+
+    <div class="projects-grid">
+
+      <div class="project-card">
+
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200" alt="">
+
+        <div class="project-content">
+
+          <h3>Business Website</h3>
+
+          <p>
+            Modern responsive business landing page design.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="project-card">
+
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200" alt="">
+
+        <div class="project-content">
+
+          <h3>Portfolio Website</h3>
+
+          <p>
+            Creative premium portfolio website UI design.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="project-card">
+
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200" alt="">
+
+        <div class="project-content">
+
+          <h3>E-commerce Design</h3>
+
+          <p>
+            Professional online store design with modern UI.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="contact" id="contact">
+
+  <div class="container">
+
+    <h2 class="section-title">Contact Me</h2>
+
+    <form>
+
+      <input type="text" placeholder="Your Name">
+
+      <input type="email" placeholder="Your Email">
+
+      <textarea placeholder="Write Your Message"></textarea>
+
+      <button class="btn">Send Message</button>
+
+    </form>
+
+  </div>
+
+</section>
+
+<footer>
+
+  <p>
+    © 2026 MAS SCARFACE | All Rights Reserved
+  </p>
+
+</footer>
+
+<script>
+
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+
+  menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+
+</script>
+
+</body>
+</html>
